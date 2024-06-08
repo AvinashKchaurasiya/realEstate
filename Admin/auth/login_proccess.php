@@ -14,16 +14,16 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $admin_data['password'])) {
             $_SESSION['name'] = $admin_data['name'];
             $_SESSION['email'] = $admin_data['email'];
-            header("location:../dashboard");
+            header("location:../dashboard.php");
             exit();
         } else {
             $_SESSION['sms'] = "1";
-            header("location:../index");
+            header("location:../index.php");
             exit();
         }
     } else {
         $_SESSION['sms'] = "2";
-        header("location:../index");
+        header("location:../index.php");
         exit();
     }
 } else {

@@ -30,7 +30,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                 <?php
                                 if (isset($_GET['id'])) {
                                     $id = $_GET['id'];
-                                    $sel = "SELECT A.*,B.prop_name FROM properties A,property_types B where A.prop_id = B.prop_id";
+                                    $sel = "SELECT * FROM properties where id = '$id'";
                                     $query = mysqli_query($con, $sel);
                                     if (mysqli_num_rows($query) > 0) {
                                         $row = mysqli_fetch_assoc($query);
@@ -45,14 +45,14 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                 <div class="form-group col-md-6">
                                                     <label for="property_type">Property Type:</label>
                                                     <select class="form-control" id="property_type" name="prop_t_id" required>
-                                                        <option value="<?= $row['prop_id']; ?>" hidden><?= $row['prop_name']; ?></option>
+                                                        <option value="<?= $row['prop_name']; ?>" hidden><?= $row['prop_name']; ?></option>
                                                         <?php
                                                         $propSel = "SELECT * from property_types";
                                                         $proQuery = mysqli_query($con, $propSel);
                                                         if (mysqli_num_rows($proQuery) > 0) {
                                                             while ($data = mysqli_fetch_assoc($proQuery)) {
                                                         ?>
-                                                                <option value="<?= $data['prop_id']; ?>"><?= $data['prop_name']; ?></option>
+                                                                <option value="<?= $data['prop_name']; ?>"><?= $data['prop_name']; ?></option>
                                                             <?php
                                                             }
                                                         } else {
@@ -73,9 +73,26 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="description">Amenities:</label>
-                                                    <textarea class="form-control" id="amenities" name="amenities" rows="3" required>
-                                                        <?= $row['amenities']; ?>
-                                                    </textarea>
+                                                    <select class="multiple-select mb-2" name="amenities[]" id="amenities" multiple>
+                                                        <?php
+                                                        $selame = "SELECT * FROM properties WHERE id='$id'";
+                                                        $dataquery = mysqli_query($con, $selame);
+                                                        while ($row1 = mysqli_fetch_array($dataquery)) {
+                                                        ?>
+                                                            <option value="<?= $row1['amenities'] ?>" selected><?= $row1['amenities'] ?></option>
+                                                            <?php
+                                                        }
+                                                        $selAmenities = "SELECT * FROM amenities";
+                                                        $query = mysqli_query($con, $selAmenities);
+                                                        if (mysqli_num_rows($query) > 0) {
+                                                            while ($data = mysqli_fetch_array($query)) {
+                                                            ?>
+                                                                <option value="<?= $data['amenity'] ?>"><?= $data['amenity'] ?></option>
+                                                        <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-row row">
@@ -148,7 +165,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                     }
                                 } else {
                                     ?>
-                                    <a href="properties" class="btn btn-primary btn-sm text-center w-100">Click Here</a>
+                                    <a href="properties.php" class="btn btn-primary btn-sm text-center w-100">Click Here</a>
                                 <?php
                                 }
                                 ?>
@@ -163,10 +180,25 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
         require('jsLink.php');
         ?>
     </body>
+    <script>
+        $(document).ready(function() {
+            $('#amenities').selectize({
+                plugins: ['remove_button'],
+                delimiter: ',',
+                persist: false,
+                create: function(input) {
+                    return {
+                        value: input,
+                        text: input
+                    };
+                }
+            });
+        });
+    </script>
 
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

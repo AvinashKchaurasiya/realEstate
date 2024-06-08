@@ -33,7 +33,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-people-fill"></i>
               </div>
-              <a href="user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -51,7 +51,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-houses-fill"></i>
               </div>
-              <a href="properties" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="properties.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -69,7 +69,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-tags"></i>
               </div>
-              <a href="property_type" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="property_type.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -89,7 +89,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                       <th>User Name</th>
                       <th>Image</th>
                       <th>Email</th>
-                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -107,7 +106,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                             <?php
                             if ($row['image'] != NULL) {
                             ?>
-                              <img src="../img/user_agent_img/<?= $row['image']; ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                              <img src="../img/user/<?= $row['image']; ?>" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                             <?php
                             } else {
                               echo "<span>No Image</span>";
@@ -216,6 +215,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
   </html>
 <?php
 } else {
-  header('Location:index');
+  header('Location:index.php');
 }
 ?>

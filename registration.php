@@ -57,7 +57,7 @@ session_start();
                                     </div>
                                     <input type="submit" class="btn btn-success mb-2" name="signup" value="Register" /><br />
                                     <div class="input-group text-center">
-                                        <label class="mb-2 mt-2">Have an account? <a href="login">Login</a></label>
+                                        <label class="mb-2 mt-2">Have an account? <a href="login.php">Login</a></label>
                                     </div>
                                 </form>
                             </div>

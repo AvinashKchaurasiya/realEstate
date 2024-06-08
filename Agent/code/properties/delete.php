@@ -21,11 +21,11 @@ if (isset($_GET['id'])) {
             unlink($img);
         }
         $_SESSION['sms'] = 'deleted';
-        header("location:../../properties");
+        header("location:../../properties.php");
     } else {
         $_SESSION['sms'] = 'not_d';
-        header("location:../../properties");
+        header("location:../../properties.php");
     }
 } else {
-    header("location:../../properties");
+    header("location:../../properties.php");
 }

@@ -9,13 +9,13 @@ if (isset($_GET['id'])) {
         $query = mysqli_query($con, $update);
         if ($query) {
             $_SESSION['sms'] = 'reject';
-            header('location:../../properties');
+            header('location:../../properties.php');
         } else {
             $_SESSION['sms'] = 'not_reject';
-            header('location:../../properties');
+            header('location:../../properties.php');
         }
     } else {
         $_SESSION['sms'] = 'rejected';
-        header('location:../../properties');
+        header('location:../../properties.php');
     }
 }

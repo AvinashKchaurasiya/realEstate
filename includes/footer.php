@@ -10,7 +10,7 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
                 <a class="btn btn-link text-white-50" href="#about">About Us</a>
-                <a class="btn btn-link text-white-50" href="contact">Contact Us</a>
+                <a class="btn btn-link text-white-50" href="feedback.php">Feedback</a>
             </div>
             <div class="col-lg-5 col-md-6">
                 <h5 class="text-white mb-4">Photo Gallery</h5>
@@ -41,7 +41,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="index">MainBazar.in</a>, All Right Reserved.
+                    &copy; <a class="border-bottom" href="index.php">MainBazar.in</a>, All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="footer-menu">

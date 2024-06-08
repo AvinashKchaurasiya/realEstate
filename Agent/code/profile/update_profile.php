@@ -10,9 +10,9 @@ if (isset($_POST['saves'])) {
     $query = mysqli_query($con, $update);
     if ($query) {
         $_SESSION['sms'] = 'updated';
-        header('location:../../profile');
+        header('location:../../profile.php');
     } else {
         $_SESSION['sms'] = 'not_updated';
-        header('location:../../profile');
+        header('location:../../profile.php');
     }
 }

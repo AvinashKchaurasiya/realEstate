@@ -132,8 +132,8 @@ require('database/connection.php');
                                                     <p class="text-success"><i class="bi bi-currency-rupee" style="font-weight:bold;"></i><?= $row['price']; ?></p>
                                                     <?php
                                                     $sel = "SELECT rating FROM ratings WHERE property_id='$id'";
-                                                    $query = mysqli_query($con, $sel);
-                                                    if (mysqli_num_rows($query) > 0) {
+                                                    $Rattingquery = mysqli_query($con, $sel);
+                                                    if (mysqli_num_rows($Rattingquery) > 0) {
                                                         $count_5 = 0;
                                                         $count_4 = 0;
                                                         $count_3 = 0;
@@ -141,7 +141,7 @@ require('database/connection.php');
                                                         $count_1 = 0;
                                                         $total_rating_sum = 0;
                                                         $total_ratings = 0;
-                                                        while ($row1 = mysqli_fetch_assoc($query)) {
+                                                        while ($row1 = mysqli_fetch_assoc($Rattingquery)) {
                                                             if ($row1['rating'] == 5) {
                                                                 $count_5++;
                                                             } else if ($row1['rating'] == 4) {
@@ -175,8 +175,19 @@ require('database/connection.php');
                                                 <p class="card-text"><?= substr($row['description'], 0, 80); ?>....</p>
                                                 <p class="card-text"><i class="bi bi-geo-alt-fill text-success"></i> <?= $row['location'] . ', ' . $row['city'] . ',' . $row['state'] . ', ' . $row['country'] . '-' . $row['zip_code'] ?></p>
                                                 <p class="card-text"><i class="fa fa-bed text-success"></i> <?= $row['bedrooms']; ?> Bed, <i class="fa fa-bath text-success"></i> <?= $row['bedrooms']; ?> Bath, <i class="fa fa-ruler-combined text-success"></i> <?= $row['area']; ?> Sqft</p>
+                                                <p class="card-text">Amenities :<?= $row['amenities']; ?></p>
+                                                <div class="card-text text-end disable" style="display:flex; justify-content:space-between;">
+                                                    <?php
+                                                    if (isset($_SESSION['email'])) {
+                                                    ?>
+                                                        <span class="btn btn-outline-success btn-sm" onclick="addWishList(<?= $id; ?>, '<?= $_SESSION['email']; ?>')">
+                                                            <i class="bi bi-bag-heart-fill" style="font-size:1rem;"></i> Add To Wishlist
+                                                        </span>
 
-                                                <p class="card-text text-end disable"><small class="text-body-secondary">
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    <small class="text-body-secondary">
                                                         <?php
                                                         $givenDate = $row['updated_at'];
                                                         $givenDateTime = new DateTime($givenDate);
@@ -196,7 +207,8 @@ require('database/connection.php');
                                                         }
                                                         echo $output;
                                                         ?>
-                                                    </small></p>
+                                                    </small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -520,14 +532,14 @@ require('database/connection.php');
                                                             }
                                                             echo $output;
                                                             ?>
-                                                            </small></p>
+                                                            </small>
                                                         </p>
                                                     </div>
                                                     <div class="card-body" style=" padding-left:3rem;">
                                                         <p class="card-text"><?= $row1['comment']; ?></p>
                                                     </div>
                                                 </div>
-                                        <?php
+                                            <?php
                                             }
                                             $total_records = mysqli_num_rows(mysqli_query($con, "SELECT * FROM ratings WHERE property_id='$id'"));
                                             $total_pages = ceil($total_records / $limit);
@@ -544,6 +556,10 @@ require('database/connection.php');
                                             }
 
                                             echo "</ul>";
+                                        } else {
+                                            ?>
+                                            <p class="text-center text-danger">This property does not have any rattings and reviews.</p>
+                                        <?php
                                         }
                                         ?>
 
@@ -677,6 +693,23 @@ require('database/connection.php');
                 sms.style.color = 'red';
                 return false;
             }
+        }
+
+        const addWishList = (id, email) => {
+            $.ajax({
+                url: 'code/add_to_wishlist.php',
+                type: 'POST',
+                data: {
+                    id: id,
+                    email: email
+                },
+                success: function(response) {
+                    alert(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus, errorThrown);
+                }
+            });
         }
     </script>
 </body>

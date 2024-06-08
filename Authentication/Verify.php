@@ -7,7 +7,7 @@ if (isset($_GET['email'])) {
     $query = mysqli_query($con, $update);
     if ($query) {
         echo "<script>";
-        echo "window.location.href='http://localhost/realEstateP/Verified'";
+        echo "window.location.href='http://localhost/realEstateP/Verified.php'";
         echo "</script>";
     }
 }

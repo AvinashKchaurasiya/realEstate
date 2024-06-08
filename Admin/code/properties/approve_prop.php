@@ -35,22 +35,22 @@ if (isset($_GET['id'])) {
 
             $mail->isHTML(true);
             $mail->Subject = 'Property Verified';
-            $mail->Body    = 'Your added Property is Approved By Admin go and check<br/><br/><a href="http://localhost/realEstateP/login" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Login</a>';
+            $mail->Body    = 'Your added Property is Approved By Admin go and check<br/><br/><a href="http://localhost/realEstateP/login.php" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Login</a>';
             if ($query) {
                 if ($mail->send()) {
                     $_SESSION['sms'] = 'Approve';
-                    header('location:../../properties');
+                    header('location:../../properties.php');
                 } else {
                 }
             } else {
                 $_SESSION['sms'] = 'n_Approve';
-                header('location:../../properties');
+                header('location:../../properties.php');
             }
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
         $_SESSION['sms'] = 'Aproved_s';
-        header('location:../../properties');
+        header('location:../../properties.php');
     }
 }

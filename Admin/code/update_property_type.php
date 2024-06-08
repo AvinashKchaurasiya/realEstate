@@ -8,13 +8,13 @@ if (isset($_POST['update_prop'])) {
     $query = mysqli_query($con, $sel);
     if (mysqli_num_rows($query) > 0) {
         $_SESSION['sms'] = 1;
-        header('Location:../edit_prop_type');
+        header('Location:../edit_prop_type.php');
     } else {
         $update = "UPDATE property_types SET prop_name = '$prop_name' WHERE prop_id = '$prop_id'";
         $sql = mysqli_query($con, $update);
         if ($sql) {
             $_SESSION['sms'] = 6;
-            header('Location:../property_type');
+            header('Location:../property_type.php');
         }
     }
 }

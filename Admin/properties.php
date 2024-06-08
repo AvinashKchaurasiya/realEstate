@@ -100,8 +100,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                     }
                                     ?>
                                     <div>
-                                        <a href="add-property" class="btn btn-success btn-sm mb-2">Add Property</a>
-                                        <a href="code/properties/approve_prop?name=1" class="btn btn-success btn-sm mb-2">Approved All</a>
+                                        <a href="add-property.php" class="btn btn-success btn-sm mb-2">Add Property</a>
                                     </div>
                                 </div>
                             </div>
@@ -132,11 +131,11 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                     if (mysqli_num_rows($qu) > 0) {
                                                         $data = mysqli_fetch_assoc($qu);
                                                     ?>
-                                                        <img src="Images/propertyImage/<?= $data['image']; ?>" class="card-img-top" alt="Path is missing" />
+                                                        <img src="Images/propertyImage/<?= $data['image']; ?>" class="card-img-top" alt="Path is missing" style="width: 100%; height: 250px;" />
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <a href="add-image?id=<?= $row['id']; ?>" class="btn btn-rounded btn-link">ADD IMAGE</a>
+                                                        <a href="add-image.php?id=<?= $row['id']; ?>" class="btn btn-rounded btn-link">ADD IMAGE</a>
                                                     <?php
                                                     }
                                                     ?>
@@ -176,12 +175,12 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                         <li class="list-group-item px-2"><?= $row['owner_contact']; ?></li>
                                                     </ul>
                                                     <div class="card-body">
-                                                        <a href="code/properties/approve_prop?id=<?= $row['id']; ?>" class="btn btn-link text-success">Approve</a>
-                                                        <a href="edit_property?id=<?= $row['id']; ?>" class="btn btn-link text-success">Edit</a>
-                                                        <a href="change_prop_img?id=<?= $row['id']; ?>" class="btn btn-link text-success">Change Image</a>
-                                                        <a href="product_view?id=<?= $row['id']; ?>" class="btn btn-link text-primary">View</a>
-                                                        <a href="code/properties/reject_prop?id=<?= $row['id']; ?>" class="btn btn-link text-danger">Reject</a>
-                                                        <a href="code/properties/delete?id=<?= $row['id']; ?>" class="btn btn-link text-danger">Delete</a>
+                                                        <a href="code/properties/approve_prop.php?id=<?= $row['id']; ?>" class="btn btn-link text-success">Approve</a>
+                                                        <a href="edit_property.php?id=<?= $row['id']; ?>" class="btn btn-link text-success">Edit</a>
+                                                        <a href="change_prop_img.php?id=<?= $row['id']; ?>" class="btn btn-link text-success">Change Image</a>
+                                                        <a href="product_view.php?id=<?= $row['id']; ?>" class="btn btn-link text-primary">View</a>
+                                                        <a href="code/properties/reject_prop.php?id=<?= $row['id']; ?>" class="btn btn-link text-danger">Reject</a>
+                                                        <a href="code/properties/delete.php?id=<?= $row['id']; ?>" class="btn btn-link text-danger">Delete</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -229,6 +228,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

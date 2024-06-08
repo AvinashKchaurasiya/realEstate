@@ -61,7 +61,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="property_type" class="btn btn-success btn-sm">
+                                    <a href="property_type.php" class="btn btn-success btn-sm">
                                         << Back</a>
                                 </div>
                             </div>
@@ -79,6 +79,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
 <?php
     }
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

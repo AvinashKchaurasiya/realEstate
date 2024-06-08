@@ -18,7 +18,7 @@ session_start();
                     <div class="card-body text-center">
                         <h5 class="card-title">Your email is verified.</h5>
                         <p class="card-text">Click on login button to further process.</p>
-                        <a href="login" class="btn btn-primary">Login</a>
+                        <a href="login.php" class="btn btn-primary">Login</a>
                     </div>
                 </div>
             </div>

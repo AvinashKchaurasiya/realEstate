@@ -7,9 +7,9 @@ if (isset($_GET['id'])) {
     $query = mysqli_query($con, $del);
     if ($query) {
         $_SESSION['sms'] = 4;
-        header('location:../property_type');
+        header('location:../property_type.php');
     } else {
         $_SESSION['sms'] = 5;
-        header('location:../property_type');
+        header('location:../property_type.php');
     }
 }

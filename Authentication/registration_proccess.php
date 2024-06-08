@@ -16,7 +16,7 @@ if (isset($_POST['signup'])) {
     $password = $_POST['password'];
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $con->prepare("INSERT INTO register_a_u (user_type, name, email, password,status) VALUES (?, ?, ?, ?,?)");
+    $stmt = $con->prepare("INSERT INTO register_a_u (user_type, name, email, password,isVerify) VALUES (?, ?, ?, ?,?)");
     if ($stmt === false) {
         die("Prepare failed: " . $con->error);
     }
@@ -41,7 +41,7 @@ if (isset($_POST['signup'])) {
 
         $mail->isHTML(true);
         $mail->Subject = 'Verify Your Email';
-        $mail->Body    = 'Your account has been created successfully to verify your email<br/><a href="http://localhost/realEstateP/Authentication/verify?email=' . $email . '" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Verify Email</a>';
+        $mail->Body    = 'Your account has been created successfully to verify your email<br/><a href="http://localhost/realEstateP/Authentication/verify.php?email=' . $email . '" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Verify Email</a>';
 
 
         if ($stmt->execute()) {

@@ -62,7 +62,20 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label for="description">Amenities:</label>
-                                            <textarea class="form-control" id="amenities" name="amenities" rows="3" required></textarea>
+                                            <select class="multiple-select mb-2" name="amenities[]" id="amenities" multiple>
+                                                <option value="">Amenities</option>
+                                                <?php
+                                                $selAmenities = "SELECT * FROM amenities";
+                                                $query = mysqli_query($con, $selAmenities);
+                                                if (mysqli_num_rows($query) > 0) {
+                                                    while ($row = mysqli_fetch_array($query)) {
+                                                ?>
+                                                        <option value="<?= $row['amenity'] ?>"><?= $row['amenity'] ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row row">
@@ -142,10 +155,25 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
         require('jsLink.php');
         ?>
     </body>
+    <script>
+        $(document).ready(function() {
+            $('#amenities').selectize({
+                plugins: ['remove_button'],
+                delimiter: ',',
+                persist: false,
+                create: function(input) {
+                    return {
+                        value: input,
+                        text: input
+                    };
+                }
+            });
+        });
+    </script>
 
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

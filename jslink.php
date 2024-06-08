@@ -8,3 +8,4 @@
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 <!-- <script src="js/owl.carousel.min.js"></script> -->
 <script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>

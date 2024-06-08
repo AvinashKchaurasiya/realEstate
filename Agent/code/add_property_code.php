@@ -24,7 +24,7 @@ if (isset($_POST['addProp'])) {
     $query = mysqli_query($con, $ins);
     if ($query) {
         $_SESSION['sms'] = 1;
-        header("Location:../properties");
+        header("Location:../properties.php");
     } else {
         $_SESSION['sms'] = 0;
         echo "error:";

@@ -35,6 +35,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

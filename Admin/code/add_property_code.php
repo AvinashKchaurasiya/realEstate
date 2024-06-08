@@ -5,7 +5,7 @@ if (isset($_POST['addProp'])) {
     $title = $_POST['title'];
     $category = $_POST['prop_name'];
     $desc = $_POST['description'];
-    $amenities = $_POST['amenities'];
+    $amenities = implode(',', $_POST['amenities']);
     $price = $_POST['price'];
     $location = $_POST['location'];
     $city = $_POST['city'];
@@ -24,7 +24,7 @@ if (isset($_POST['addProp'])) {
     $query = mysqli_query($con, $ins);
     if ($query) {
         $_SESSION['sms'] = 1;
-        header("Location:../properties");
+        header("Location:../properties.php");
     } else {
         $_SESSION['sms'] = 0;
         echo "error:";

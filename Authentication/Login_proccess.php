@@ -17,24 +17,24 @@ if (isset($_POST['login'])) {
             if ($login_type == 'agent') {
                 $_SESSION['name'] = $user_data['name'];
                 $_SESSION['email'] = $user_data['email'];
-                header("location:../agent/dashboard");
+                header("location:../agent/dashboard.php");
                 exit();
             } else if ($login_type == 'user') {
                 $_SESSION['name'] = $user_data['name'];
                 $_SESSION['email'] = $user_data['email'];
-                header("location:../index");
+                header("location:../index.php");
                 exit();
             }
         } else {
             $_SESSION['sms'] = "2";
-            header("location:../login");
+            header("location:../login.php");
             exit();
         }
     } else {
         $_SESSION['sms'] = "4";
-        header("location:../login");
+        header("location:../login.php");
         exit();
     }
 } else {
-    echo "Please enter";
+    echo "Please Submit Form First";
 }

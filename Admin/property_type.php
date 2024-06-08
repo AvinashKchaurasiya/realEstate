@@ -99,8 +99,8 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                     <tr>
                                                         <td><?= $sn; ?></td>
                                                         <td><?= $row['prop_name']; ?></td>
-                                                        <td><a href="edit_prop_type?id=<?= $row['prop_id']; ?>" class="btn btn-sm btn-success "><i class="bi bi-pencil-square"></i></a></td>
-                                                        <td><a href="code/delete_prop_type?id=<?= $row['prop_id']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+                                                        <td><a href="edit_prop_type.php?id=<?= $row['prop_id']; ?>" class="btn btn-sm btn-success "><i class="bi bi-pencil-square"></i></a></td>
+                                                        <td><a href="code/delete_prop_type.php?id=<?= $row['prop_id']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></td>
                                                     </tr>
                                             <?php
                                                     $sn++;
@@ -144,6 +144,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

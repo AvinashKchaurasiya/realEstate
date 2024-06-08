@@ -16,18 +16,18 @@ if (isset($_POST['img'])) {
                 $query = mysqli_query($con, $insert);
                 if ($query) {
                     $_SESSION['sms'] = 2;
-                    header('location:../properties');
+                    header('location:../properties.php');
                 } else {
                     $_SESSION['sms'] = 0;
-                    header('location:../add-image');
+                    header('location:../add-image.php');
                 }
             } else {
                 $_SESSION['sms'] = 1;
-                header('location:../add-image');
+                header('location:../add-image.php');
             }
         } else {
             $_SESSION['sms'] = 3;
-            header('location:../add-image');
+            header('location:../add-image.php');
         }
     }
 }

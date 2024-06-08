@@ -29,18 +29,18 @@ if (isset($_POST['img'])) {
                         unlink($img);
                     }
                     $_SESSION['sms'] = 'img_change';
-                    header('location:../../properties');
+                    header('location:../../properties.php');
                 } else {
                     $_SESSION['sms'] = 0;
-                    header('location:../../change_prop_img');
+                    header('location:../../change_prop_img.php');
                 }
             } else {
                 $_SESSION['sms'] = 1;
-                header('location:../../change_prop_img');
+                header('location:../../change_prop_img.php');
             }
         } else {
             $_SESSION['sms'] = 3;
-            header('location:../../change_prop_img');
+            header('location:../../change_prop_img.php');
         }
     }
 }

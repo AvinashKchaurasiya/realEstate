@@ -62,7 +62,7 @@ require('database/connection.php');
         ?>
         <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 30px 0px 20px 0px;">
             <div class="container">
-                <form action="properties" method="get">
+                <form action="properties.php" method="get">
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-4">
@@ -124,7 +124,11 @@ require('database/connection.php');
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
                                 <?php
-                                $sel = "SELECT * FROM properties WHERE status=1 LIMIT 6";
+                                $sel = "SELECT A.*,B.rating
+                                FROM properties A
+                                LEFT JOIN ratings B ON A.id = B.property_id
+                                WHERE status = 1
+                                LIMIT 6";
                                 $query = mysqli_query($con, $sel);
 
                                 if (mysqli_num_rows($query) > 0) {
@@ -141,11 +145,11 @@ require('database/connection.php');
                                                     if (mysqli_num_rows($qu) > 0) {
                                                         $data = mysqli_fetch_assoc($qu);
                                                     ?>
-                                                        <a href="property-desc?id=<?= $id; ?>"><img class="img-fluid" src="Admin/Images/propertyImage/<?= $data['image'] ?>" alt=""></a>
+                                                        <a href="property-desc.php?id=<?= $id; ?>"><img class="img-fluid" src="Admin/Images/propertyImage/<?= $data['image'] ?>" alt=""></a>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <a href="property-desc?id=<?= $id; ?>"><img class="img-fluid" src="img/icon/prop.png" alt=""></a>
+                                                        <a href="property-desc.php?id=<?= $id; ?>"><img class="img-fluid" src="img/icon/prop.png" alt=""></a>
                                                     <?php
                                                     }
                                                     ?>
@@ -156,8 +160,9 @@ require('database/connection.php');
                                                 </div>
                                                 <div class="p-4 pb-0">
                                                     <h6 class="text-primary mb-3">रु <?= $row['price']; ?></h6>
-                                                    <a class="d-block h5 mb-2" href="property-desc?id=<?= $id; ?>"><?= ucfirst($row['title']); ?></a>
-                                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i><?= $row['location'] . ', ' . $row['city'] . ', ' . $row['state'] . ', ' . $row['country'] . ' - ' . $row['zip_code']; ?></p>
+                                                    <a class="d-block h5 mb-2" href="property-desc.php?id=<?= $id; ?>"><?= ucfirst($row['title']); ?></a>
+                                                    <p class="card-text"><i class="bi bi-geo-alt-fill text-success"></i> <?= $row['location'] . ', ' . $row['city'] . ',' . $row['state'] . ', ' . $row['country'] . '-' . $row['zip_code'] ?></p>
+
                                                 </div>
                                                 <div class="d-flex border-top">
                                                     <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i><?= $row['area']; ?></small>
@@ -172,7 +177,7 @@ require('database/connection.php');
                                 }
                                 ?>
                                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                    <a class="btn btn-primary py-3 px-5" href="properties">Browse More Property</a>
+                                    <a class="btn btn-primary py-3 px-5" href="properties.php">Browse More Property</a>
                                 </div>
                             </div>
                         </div>
@@ -253,42 +258,27 @@ require('database/connection.php');
                     <p></p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Client Name</h6>
-                                    <small>Profession</small>
+                    <?php
+                    $selectFeedback = "SELECT * FROM testimonial order by id DESC";
+                    $query = mysqli_query($con, $selectFeedback);
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                    ?>
+                            <div class="testimonial-item bg-light rounded p-3">
+                                <div class="bg-white border rounded p-4">
+                                    <p><?= $row['feedback'] ?></p>
+                                    <div class="d-flex align-items-center">
+                                        <img class="img-fluid flex-shrink-0 rounded" src="img/feedback_image/<?= $row['image'] ?>" style="width: 60px; height: 60px;">
+                                        <div class="ps-3">
+                                            <h6 class="fw-bold mb-1"><?= $row['name']; ?></h6>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Client Name</h6>
-                                    <small>Profession</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-light rounded p-3">
-                        <div class="bg-white border rounded p-4">
-                            <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg" style="width: 45px; height: 45px;">
-                                <div class="ps-3">
-                                    <h6 class="fw-bold mb-1">Client Name</h6>
-                                    <small>Profession</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>

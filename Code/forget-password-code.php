@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isHTML(true);
             $mail->Subject = 'Forget Password';
             $mail->Body    = 'Click on reset password to reset your password<br/><br/>
-            <a href="http://localhost/realEstateP/reset-password?email=' . $email . '" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Reset Password</a>';
+            <a href="http://localhost/realEstateP/reset-password.php?email=' . $email . '" target="_blank" style="background-color:#00b98e; padding:1rem; text-decoration:none; color:white; border-radius:5px; display:inline-block;">Reset Password</a>';
             if ($mail->send()) {
                 echo "sent";
             } else {

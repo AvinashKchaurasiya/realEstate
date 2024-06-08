@@ -30,11 +30,8 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                 <?php
                                 if (isset($_GET['id'])) {
                                     $id = $_GET['id'];
-                                    $sel = "SELECT A.*,B.prop_name 
-                                    FROM properties A 
-                                    JOIN 
-                                        property_types B ON A.prop_id = B.prop_id
-                                    where A.id='$id'";
+                                    $sel = "SELECT *
+                                    FROM properties where id='$id'";
                                     $query = mysqli_query($con, $sel);
                                     if ($query) {
                                         $data = mysqli_fetch_assoc($query);
@@ -58,7 +55,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                         } else {
                                                             ?>
                                                             <div style="display: flex; justify-content:center;" class="mb-2">
-                                                                <a href=" add-image?id=<?= $data['id']; ?>" class="btn btn-primary btn-sm">Add Images</a>
+                                                                <a href=" add-image.php?id=<?= $data['id']; ?>" class="btn btn-primary btn-sm">Add Images</a>
                                                             </div>
                                                         <?php
                                                         }
@@ -81,7 +78,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
                                                         <p><span class="me-5">Owner Name : <?= $data['owner_name']; ?></span>, <span>Owner Contact: <?= $data['owner_contact'] ?></span></p>
                                                     </div>
                                                     <div class="card-footer" style="display:flex; justify-content:space-between">
-                                                        <a href="properties" class="btn btn-success btn-sm"> Back </a>
+                                                        <a href="properties.php" class="btn btn-success btn-sm"> Back </a>
                                                         <p class="card-text" style="text-align:right;"><small class="text-body-secondary">Last Update
                                                                 <?php
                                                                 $givenDate = $data['updated_at'];
@@ -126,6 +123,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
     </html>
 <?php
 } else {
-    header('Location:index');
+    header('Location:index.php');
 }
 ?>

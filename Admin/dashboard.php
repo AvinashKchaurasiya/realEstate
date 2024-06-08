@@ -33,7 +33,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-people-fill"></i>
               </div>
-              <a href="user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-3 col-6">
@@ -50,7 +50,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-people-fill"></i>
               </div>
-              <a href="agent" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="agent.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -68,7 +68,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-houses-fill"></i>
               </div>
-              <a href="properties" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="properties.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -86,7 +86,7 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
               <div class="icon">
                 <i class="bi bi-tags"></i>
               </div>
-              <a href="property_type" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="property_type.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -326,6 +326,6 @@ if (isset($_SESSION['name']) and isset($_SESSION['email'])) {
   </html>
 <?php
 } else {
-  header('Location:index');
+  header('Location:index.php');
 }
 ?>

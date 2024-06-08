@@ -64,10 +64,10 @@ session_start();
                                         <input type="password" class="form-control" name="password" id="password" minlength="6" placeholder="Enter Password..." onkeyup="validatePassword(this.value)" />
                                         <button class="btn btn-outline-secondary" type="button" id="show_btn"><i class="bi bi-eye"></i></button>
                                     </div>
-                                    <label class="mb-2">Forget Password ? <a href="forget_password">Click here</a></label><br />
+                                    <label class="mb-2">Forget Password ? <a href="forget_password.php">Click here</a></label><br />
                                     <input type="submit" class="btn btn-success mb-2" name="login" value="Login" /><br />
                                     <div class="input-group">
-                                        <label class="mb-2 mt-2">Don't have an account? <a href="registration">Register Now</a></label>
+                                        <label class="mb-2 mt-2">Don't have an account? <a href="registration.php">Register Now</a></label>
                                     </div>
                                 </form>
                             </div>
@@ -101,17 +101,6 @@ session_start();
             });
 
         });
-
-        function validatePassword(password) {
-            var passwordRegex = /^(?=.*[a-zA-Z0-9])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-            var messageElement = document.getElementById("err");
-            if (passwordRegex.test(password)) {
-                messageElement.textContent = "";
-            } else {
-                messageElement.textContent = "Password must contain at least 6 characters with letters, numbers, and some special symbols.";
-                messageElement.style.color = "red";
-            }
-        }
     </script>
 </body>
 

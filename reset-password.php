@@ -96,7 +96,7 @@ if (isset($_GET['email'])) {
 <?php
 } else {
     echo "<script>alert('Invalid Request');
-    window.location.href='login';
+    window.location.href='login.php';
     </script>";
 }
 ?>
