@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 session_start();
 require('database/connection.php');
 ?>
@@ -285,7 +288,7 @@ require('database/connection.php');
         <?php require_once('includes/footer.php'); ?>
     </div>
 
-    <?php require_once('jsLink.php') ?>
+    <?php require_once('jslink.php') ?>
     <script>
         $(document).ready(function() {
             $(".owl-carousel").owlCarousel({
